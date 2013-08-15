@@ -1,5 +1,7 @@
 package ted80.seedviewer.biome;
 
+import ted80.seedviewer.block.Block;
+
 public class Biome 
 {
 	public static final Biome[] biomeList = new Biome[500];
@@ -30,10 +32,10 @@ public class Biome
 	public static final Biome BETA_SWAMPLAND              = new BiomeBeta(51, 0xFFFFFF, "Swampland");
 	public static final Biome BETA_SEASONALFOREST         = new BiomeBeta(52, 0xCCCCCC, "Seasonal Forest");
 	public static final Biome BETA_FOREST                 = new BiomeBeta(53, 0xFFFFFF, "Forest");
-	public static final Biome BETA_SAVANNA                = new BiomeBeta(54, 0xCCCCCC, "Savanna");
+	public static final Biome BETA_SAVANNA                = new BiomeBeta(54, 0xCCCCCC, "Savanna"); 
 	public static final Biome BETA_SCHRUBLAND             = new BiomeBeta(55, 0xFFFFFF, "Schrubland");
 	public static final Biome BETA_TAIGA                  = new BiomeBeta(56, 0xCCCCCC, "Taiga");
-	public static final Biome BETA_DESERT                 = new BiomeBeta(57, 0xFFFFFF, "Desert");
+	public static final Biome BETA_DESERT                 = new BiomeBeta(57, 0xFFFFFF, "Desert"); //DESERT
 	public static final Biome BETA_PLAINS                 = new BiomeBeta(58, 0xCCCCCC, "Plains");
 	public static final Biome BETA_TUNDRA                 = new BiomeBeta(59, 0xFFFFFF, "Tundra");
 	
@@ -82,8 +84,8 @@ public class Biome
     public final int biomeColor;
     public final String biomeName;
     
-    public int topBlock;
-    public int fillerBlock;
+    public int topBlock = Block.BLOCK_GRASS.blockID;
+    public int fillerBlock = Block.BLOCK_DIRT.blockID;
     
     public Biome(int i, int c, String n)
     {

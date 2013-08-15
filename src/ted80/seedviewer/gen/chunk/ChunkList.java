@@ -14,11 +14,11 @@ public class ChunkList implements Runnable
 		chunks = new ArrayList<Chunk>();
 		genQueue = new ArrayList<int[]>();
 		
-		for(int i = 0; i < 10; i++)
+		for(int i = 0; i < 15; i++)
 		{
-			for(int j = 0; j < 10; j++)
+			for(int j = 0; j < 12; j++)
 			{
-				genQueue.add(new int[]{i,j});
+				genQueue.add(new int[]{j,i});
 			}
 		}
 	}
@@ -27,10 +27,8 @@ public class ChunkList implements Runnable
 	{
 		if(genQueue.size() > 0)
 		{
-			int[] chunkcoords = genQueue.get(0);
+			Chunk c = Generation.chunkprovider.provideChunk(genQueue.get(0)[0], genQueue.get(0)[1]);
 			genQueue.remove(0);
-			
-			Chunk c = Generation.chunkprovider.provideChunk(chunkcoords[0], chunkcoords[1]);
 			chunks.add(c);
 		}
 	}

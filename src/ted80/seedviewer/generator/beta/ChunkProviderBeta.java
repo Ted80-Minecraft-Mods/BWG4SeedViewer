@@ -49,7 +49,6 @@ public class ChunkProviderBeta implements IChunkProvider
 	
 	public Chunk provideChunk(int i, int j) 
 	{
-        System.out.println("START");
         rand.setSeed((long)i * 0x4f9939f508L + (long)j * 0x1ef1565bd5L);
         byte blocks[] = new byte[32768];
         biomesForGeneration = Generation.chunkmanager.loadBlockGeneratorData(biomesForGeneration, i * 16, j * 16, 16, 16);
@@ -65,22 +64,21 @@ public class ChunkProviderBeta implements IChunkProvider
         {
             for(int l = 0; l < 16; l++)
             {
-            	for(int k1 = 127; k1 >= 0; k1--)
-            	{
-            		int l1 = (l * 16 + k) * 128 + k1;
+                for(int k1 = 127; k1 >= 0; k1--)
+                {
+                    int l1 = (l * 16 + k) * 128 + k1;
             		
             		if(blocks[l1] != 0)
             		{
-            			toparray[k][l] = blocks[l1];
+            			toparray[k][l] = (int) blocks[l1];
             			biomearray[k][l] = biomesForGeneration[k + l * 16].biomeID;
-            			heightarray[k][l] = k1;
+            			heightarray[k][l] = -(k1 - 127);
             			break;
             		}
             	}
             }
         }
         
-        System.out.println("DONE");
 		return new Chunk(i, j, toparray, biomearray, heightarray);
 	}
 	
@@ -194,6 +192,9 @@ public class ChunkProviderBeta implements IChunkProvider
                     }
                     if(j1 == -1)
                     {
+                        byte1 = (byte) biome.topBlock;
+                        byte2 = (byte) biome.fillerBlock;
+                    	
                         if(i1 <= 0)
                         {
                             byte1 = 0;

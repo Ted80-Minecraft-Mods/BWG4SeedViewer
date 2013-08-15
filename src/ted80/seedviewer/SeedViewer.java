@@ -48,7 +48,7 @@ public class SeedViewer
 	public void start()
 	{
 		draw = new Draw();
-		gen = new Generation(Generator.BETA1, translateSeed("Glacier"));
+		gen = new Generation(Generator.BETA1, translateSeed("tedje"));
 		
 		while(!Display.isCloseRequested())
 		{
@@ -60,13 +60,13 @@ public class SeedViewer
 					Thread genchunk = new Thread(Generation.chunklist);
 					genchunk.start();
 				}
-				gentimer = 2;
+				gentimer = 0;
 			}
 			
 			draw.updateScreen();
 			
 			Display.update();
-			Display.sync(2);
+			Display.sync(8);
 		}
 		
 		Display.destroy();

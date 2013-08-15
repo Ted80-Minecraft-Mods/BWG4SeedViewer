@@ -11,6 +11,9 @@ public class Chunk
 	
 	public Chunk(int x, int y, int[][] toparray, int[][] biomearray, int[][] heightarray)
 	{
+		chunkX = x;
+		chunkY = y;
+		
 		TOPBLOCK = toparray;
 		BIOMES = biomearray;
 		HEIGHT = heightarray;
